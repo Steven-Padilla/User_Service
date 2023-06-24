@@ -7,6 +7,7 @@ import { getByIdUserController } from './dependencies/GetByIdDependency'
 import { deleteUsersController } from './dependencies/DeleteUserDependency'
 import { updateUserController } from './dependencies/UpdateUserDependency'
 import { getByIdNameUsersController } from './dependencies/GetByIdNameDependency'
+import { loginUserController } from './dependencies/LoginUserDependency'
 
 
 
@@ -16,7 +17,8 @@ userRouter.get("/getbyid/:id", getByIdUserController.run.bind(getByIdUserControl
 userRouter.get("/getbyidname/:id_name", getByIdNameUsersController.run.bind(getByIdNameUsersController));
 
 userRouter.post("/create/", createUserController.run.bind(createUserController));
-userRouter.post("/update/", updateUserController.run.bind(updateUserController));
+userRouter.post("/login/", loginUserController.run.bind(loginUserController));
+userRouter.put("/update/", updateUserController.run.bind(updateUserController));
 userRouter.delete("/delete/:id", deleteUsersController.run.bind(deleteUsersController));
 
 export { userRouter };
