@@ -14,9 +14,6 @@ export class LoginUserRepositoryImpl implements LoginUserRepository {
         ]},
     });
     if (res) target = res;
-
-    console.log(target.dataValues);
-
     if (!target.id_name) return false;
     return bcrypt_compare(password, target.password);
   }
