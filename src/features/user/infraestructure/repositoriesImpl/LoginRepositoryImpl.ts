@@ -1,7 +1,7 @@
 import { LoginUserRepository } from "../../domain/repositories/LoginUserRepository";
 import { User } from "../../domain/entities/User";
 import bcrypt from "bcrypt";
-const { Op } = require("sequelize");
+import  {Op } from "sequelize";
 
 export class LoginUserRepositoryImpl implements LoginUserRepository {
   async login(password: string, emailOrId_name: string): Promise<boolean> {
