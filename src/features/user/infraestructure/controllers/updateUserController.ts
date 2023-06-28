@@ -10,7 +10,7 @@ export class UpdateUserController {
   async run(req: Request, res: Response) {
     const body = req.body as User;
 
-    const user = await this.updateUserUseCase.run(body.id, body.name, body.id_name, body.email, body.premium);
+    const user = await this.updateUserUseCase.run(body.id_name,body.name,body.email, body.premium);
     return res.status(200).json(user);
   }
 }

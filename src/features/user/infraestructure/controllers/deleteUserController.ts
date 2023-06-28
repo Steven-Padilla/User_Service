@@ -7,7 +7,7 @@ export class DeleteUserController {
 
   async run(req: Request, res: Response) {
     const { id } = req.params
-    const user = await this.deleteUsersUseCase.run(Number(id));
+    const user = await this.deleteUsersUseCase.run(id);
     return res.status(200).json(user);
   }
 }

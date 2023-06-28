@@ -1,7 +1,6 @@
 import { Model, DataTypes } from 'sequelize'
 import { postgresConnection } from '../../infraestructure/db/postgresqlDB';
 export class User extends Model {
-    declare id: number;
     declare name: string;
     declare id_name: string;
     declare email: string;
@@ -10,13 +9,11 @@ export class User extends Model {
 };
 
 User.init({
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
+    id_name: {
+        type:DataTypes.STRING,
+        primaryKey: true
     },
     name: DataTypes.STRING,
-    id_name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     premium: DataTypes.BOOLEAN,

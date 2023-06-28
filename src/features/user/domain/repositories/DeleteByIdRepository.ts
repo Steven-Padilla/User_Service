@@ -1,5 +1,5 @@
 
 
 export interface DeleteByIdRepository {
-    deleteById(id: number): Promise<string>;
+    deleteById(id_name: string): Promise<string>;
 }

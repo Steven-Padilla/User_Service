@@ -10,7 +10,7 @@ export const postgresConnection = new Sequelize(db_name, db_user, db_password, {
 async function test (){
     try {
         // Uncomment the following line just once at the beginning
-        postgresConnection.sync({alter:true});
+        postgresConnection.sync({force:true});
         await postgresConnection.authenticate();
         console.log('Connection has been established successfully.');
     } catch (error) {

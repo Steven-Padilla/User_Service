@@ -2,8 +2,10 @@ import { UpdateUserRepository } from '../../domain/repositories/UpdateUserReposi
 import { User } from '../../domain/entities/User';
 
 export class UpdateUserControllerImpl implements UpdateUserRepository {
-    async updateUser(id: number, name: string, email: string, id_name: string, premium: boolean): Promise<User> {
-        const user = await User.findByPk(id);
+    async updateUser(id_name: string,name: string, email: string, premium: boolean): Promise<User> {
+        const user = await User.findOne({
+            where:{id_name}
+        });
 
         if (user) {
             await user.update({
