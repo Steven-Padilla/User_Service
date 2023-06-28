@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   users-service:
-    image: stevenpadilla/users_service:1.1.1
+    image: stevenpadilla/users_service:1.1.2
     build:
       context: .
       dockerfile: Dockerfile
