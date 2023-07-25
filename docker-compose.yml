@@ -2,14 +2,16 @@ version: '3.7'
 
 services:
   users-service:
-    image: stevenpadilla/users_service:1.1.2
+    image: stevenpadilla/users_service:1.1.3
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: Dockerfile
-      target: production
+      target: base
     container_name: users-service
     expose:
       - '1709'
     ports:
-      - '3002:1709'
+      - '3001:1709'
     command: node dist/src/index.js

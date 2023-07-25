@@ -10,14 +10,15 @@ export class LoginUserController {
   async run(req: Request, res: Response) {
     const {email, id_name, password} = req.body as User;
     const emailOrId_name = email ? email : id_name
-    const isLogged = await this.loginUserUseCase.run( password, emailOrId_name);
-    if (isLogged) return res.status(200).json({
-      data:"You are logged in",
-      login:isLogged
+    const data = await this.loginUserUseCase.run( password, emailOrId_name);
+    if (data) return res.status(200).json({
+      message:"You are logged in",
+      login:true,
+      data:data
     });
     return res.status(400).json({
       data:"Data invalid",
-      login:isLogged
+      login:false
     });
   }
 }

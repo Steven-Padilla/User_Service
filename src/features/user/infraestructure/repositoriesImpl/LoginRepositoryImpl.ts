@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import  {Op } from "sequelize";
 
 export class LoginUserRepositoryImpl implements LoginUserRepository {
-  async login(password: string, emailOrId_name: string): Promise<boolean> {
+  async login(password: string, emailOrId_name: string): Promise<Array<any> | undefined> {
     let target = new User();
     const res = await User.findOne({
       where: { 
@@ -14,8 +14,10 @@ export class LoginUserRepositoryImpl implements LoginUserRepository {
         ]},
     });
     if (res) target = res;
-    if (!target.id_name) return false;
-    return bcrypt_compare(password, target.password);
+    if (!target.id_name) return undefined;
+    const isLogged= await bcrypt_compare(password, target.password);
+    if (isLogged) return [target.name, target.id_name, target.email];
+    return undefined;
   }
 }
 
